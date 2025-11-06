@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎯 ITSM Incident Priority Prediction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body class="bg-light">
+<div class="container mt-5 p-4 bg-white rounded shadow">
+    <h2 class="text-center text-primary mb-4">🎯 ITSM Incident Priority Prediction</h2>
+
+    <form action="/predict" method="post">
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label>CI Category</label>
+                <select name="CI_Cat" class="form-control" required>
+                    <option value="application">Application</option>
+                    <option value="subapplication">Subapplication</option>
+                    <option value="database">Database</option>
+                    <option value="hardware">Hardware</option>
+                    <option value="network">Network</option>
+                    <option value="server">Server</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>CI Subcategory</label>
+                <input type="text" name="CI_Subcat" class="form-control" value="Web Based Application" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Status</label>
+                <select name="Status" class="form-control" required>
+                    <option value="Open">Open</option>
+                    <option value="Closed" selected>Closed</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Impact</label>
+                <select name="Impact" class="form-control" required>
+                    <option value="1">1 - Critical</option>
+                    <option value="2">2 - High</option>
+                    <option value="3" selected>3 - Medium</option>
+                    <option value="4">4 - Low</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Urgency</label>
+                <select name="Urgency" class="form-control" required>
+                    <option value="1">1 - Immediate</option>
+                    <option value="2">2 - High</option>
+                    <option value="3" selected>3 - Normal</option>
+                    <option value="4">4 - Low</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Category</label>
+                <select name="Category" class="form-control" required>
+                    <option value="Software">Software</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Network">Network</option>
+                    <option value="Database">Database</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Alert Status</label>
+                <select name="Alert_Status" class="form-control" required>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>No. of Reassignments</label>
+                <input type="number" name="No_of_Reassignments" step="1" value="1" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Handle Time (hrs)</label>
+                <input type="number" name="Handle_Time_hrs" step="0.1" value="2.5" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Closure Code</label>
+                <select name="Closure_Code" class="form-control" required>
+                    <option value="Software">Software</option>
+                    <option value="Operator error">Operator error</option>
+                    <option value="Other">Other</option>
+                    <option value="No error - works as designed">No error - works as designed</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>No. of Related Interactions</label>
+                <input type="number" name="No_of_Related_Interactions" step="1" value="1" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>No. of Related Incidents</label>
+                <input type="number" name="No_of_Related_Incidents" step="1" value="0" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>No. of Related Changes</label>
+                <input type="number" name="No_of_Related_Changes" step="1" value="0" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Resolution Time (hrs)</label>
+                <input type="number" name="Resolution_Time_hrs" step="0.1" value="3.0" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Predict Priority</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="alert alert-info mt-4 text-center">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
