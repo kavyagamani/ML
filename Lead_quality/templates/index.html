@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 FicZon Lead Quality Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+<div class="container mt-5 p-4 bg-white rounded shadow">
+    <h2 class="text-center text-primary mb-4">🎯 FicZon Lead Quality Prediction</h2>
+
+    <form action="/predict" method="POST">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>Lead Source</label>
+                <select name="Lead_Source" class="form-control" required>
+                    <option>Google</option>
+                    <option>LinkedIn</option>
+                    <option>Facebook</option>
+                    <option>Referral</option>
+                    <option>Website</option>
+                    <option>Email</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Lead Type</label>
+                <select name="Lead_Type" class="form-control" required>
+                    <option>Cold</option>
+                    <option>Warm</option>
+                    <option>Hot</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Lead Sector</label>
+                <select name="Lead_Sector" class="form-control" required>
+                    <option>Education</option>
+                    <option>Finance</option>
+                    <option>Healthcare</option>
+                    <option>Retail</option>
+                    <option>IT</option>
+                    <option>Manufacturing</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Lead Country</label>
+                <select name="Lead_Country" class="form-control" required>
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                    <option>Germany</option>
+                    <option>Canada</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Engagement Score (0–100)</label>
+                <input type="number" name="Lead_Engagement_Score" min="0" max="100" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Number of Visits</label>
+                <input type="number" name="Lead_Visits" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Time on Site (Minutes)</label>
+                <input type="number" name="Time_on_Site_Min" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Lead Age (Days)</label>
+                <input type="number" name="Lead_Age_Days" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Email Opened</label>
+                <select name="Lead_Email_Opened" class="form-control">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Call Attended</label>
+                <select name="Lead_Call_Attended" class="form-control">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Lead Score (0–100)</label>
+                <input type="number" name="Lead_Score" min="0" max="100" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Lead Region</label>
+                <select name="Lead_Region" class="form-control" required>
+                    <option>North</option>
+                    <option>South</option>
+                    <option>East</option>
+                    <option>West</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Employee Count</label>
+                <select name="Lead_Employee_Count" class="form-control" required>
+                    <option>&lt;50</option>
+                    <option>50-100</option>
+                    <option>100-500</option>
+                    <option>&gt;500</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Predict Lead Quality</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="alert alert-info text-center mt-4">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
